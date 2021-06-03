@@ -11,3 +11,26 @@
     color: grey
   }
 }
+
+.hooks-content {
+  margin-top: 1vh;
+  padding-bottom: 2vh;
+
+  .blurb {
+    font-size: 14px;
+    font-weight: 500;
+    color: grey;
+    margin-bottom: 20px;
+    text-align: justify;
+    text-justify: inter-word;
+    max-width: 50%;
+  }
+}
+
+button {
+  border: none;
+  font-size: 12px;
+  padding: 5px;
+  color: white;
+  background-color: rgb(0, 93, 199);
+}
