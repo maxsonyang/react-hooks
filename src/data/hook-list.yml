@@ -1,0 +1,9 @@
+- header: useState
+  link: /useState
+  subheader: Different ways to maintain state in a component.
+- header: useEffect
+  link: /useEffect
+  subheader: Doing stuff after render.
+- header: useRef
+  link: /useRef
+  subheader: A hook that provides a reference to an element(?)

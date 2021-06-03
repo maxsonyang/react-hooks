@@ -3,9 +3,24 @@ import { Link } from 'gatsby';
 import "../styles/global.scss";
 import "../styles/pages/index.scss";
 import "../styles/pages/hooks.scss";
+import hookList from "../data/hook-list.yml"
 
 // markup
 const IndexPage = () => {
+
+  function renderHooksList() {
+    return hookList.map((hook) => (
+      <div className="hook">
+        <Link to={hook.link}>
+          {hook.header}
+        </Link>
+        <div className="subheader">
+          {hook.subheader}
+        </div>
+      </div>
+    ))
+  }
+
   return (
     <div className="container-fluid">
       <div className="page-header">
@@ -17,30 +32,7 @@ const IndexPage = () => {
         There are hooks here!
       </div>
       <div className="hooks-list">
-        <div className="hook">
-          <Link to="/useState">
-            useState
-          </Link>
-          <div className="subheader">
-            Different ways to maintain state in a component.
-          </div>
-        </div>
-        <div className="hook">
-          <Link to="/useEffect">
-            useEffect + useLayoutEffect
-          </Link>
-          <div className="subheader">
-            Doing stuff after render.
-          </div>
-        </div>
-        <div className="hook">
-          <Link to="/useRef">
-            useRef
-          </Link>
-          <div className="subheader">
-            A hook that provides a reference to an element(?)
-          </div>
-        </div>
+        {renderHooksList()}
       </div>
     </div>
   )
