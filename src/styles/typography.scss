@@ -1,0 +1,18 @@
+// Globally used component typography is styled here
+
+body {
+  font-family: 'Lato', sans-serif;
+}
+
+.page-header {
+  h1 {
+    font-size: 36px;
+    font-weight: 900;
+  }
+}
+
+.page-subheader {
+  font-weight: 500;
+  font-size: 18px;
+  color: grey;
+}
