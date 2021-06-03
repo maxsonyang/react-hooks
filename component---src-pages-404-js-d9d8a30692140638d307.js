@@ -1,0 +1,2 @@
+(self.webpackChunkreact_hooks=self.webpackChunkreact_hooks||[]).push([[883],{9616:function(e,o,t){"use strict";t.r(o);var r=t(7294),n=t(5444);o.default=function(){return r.createElement("div",null,"This is not the page you're looking for.",r.createElement(n.rU,{to:"/"},"You're right, I should go home."))}}}]);
+//# sourceMappingURL=component---src-pages-404-js-d9d8a30692140638d307.js.map
