@@ -112,7 +112,8 @@ function UseStatePage() {
           <div className="blurb">
             A form as an example of a very common use case, as well as a generalized
             state updater. This approach allows us to decouple state from the actual
-            UI, so we can plug this into other components.
+            UI, so we can plug this into other components. It can also be called whenever
+            there's a state change.
           </div>
           <FormExample />
         </div>

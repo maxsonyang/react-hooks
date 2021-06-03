@@ -22,7 +22,15 @@ const IndexPage = () => {
             useState
           </Link>
           <div className="subheader">
-            There will be a subheader here in a second.
+            Different ways to maintain state in a component.
+          </div>
+        </div>
+        <div className="hook">
+          <Link to="/useEffect">
+            useEffect
+          </Link>
+          <div className="subheader">
+            Doing stuff after render.
           </div>
         </div>
       </div>

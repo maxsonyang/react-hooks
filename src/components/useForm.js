@@ -5,7 +5,7 @@ import React, { useState } from 'react';
   however we'd like, and plug it into a UI component.
 */
 
-function useForm(initialValues) {
+export function useForm(initialValues) {
   const [values, setValues] = useState(initialValues);
 
   return [values, e => {
