@@ -132,7 +132,7 @@ function UseStatePage() {
           </h2>
           <div className="blurb">
             useEffect can be a good spot to fetch data from APIs as well.
-            API used: <a href="http://numbersapi.com/" target="_blank">Numbers API</a>
+            API used: <a href="https://numbersapi.com/" target="_blank">Numbers API</a>
           </div>
           <div>
             {loading ? 'fun fact loading...' : data }
@@ -148,8 +148,9 @@ function UseStatePage() {
             Local Storage Example
           </h2>
           <div className="blurb">
-            useEffect can also be useful for persisting data, that is updating
-            values that we'd like to persist.
+            useEffect can also be useful for persisting data, in this case
+            making a call to localStorage to save each time the count is
+            updated.
           </div>
           <div>
             The count is: {`${count}`}
