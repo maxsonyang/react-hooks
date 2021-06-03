@@ -19,7 +19,7 @@ function UseStatePage() {
   })
   const [randomNumber, setRandomNumber] = useState(() => getRandomInt(100))
 
-  const {data, loading} = useFetch(`http://numbersapi.com/${randomNumber}/trivia`)
+  const {data, loading} = useFetch(`https://numbersapi.com/${randomNumber}/trivia`)
 
   const [show, setShow] = useState(true);
   const [count, setCount] = useState(0);
