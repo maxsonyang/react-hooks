@@ -17,7 +17,7 @@ function UseStatePage() {
     email: "",
     password: ""
   })
-  const [randomNumber, setRandomNumber] = useState(() => getRandomInt(100))
+  const [randomNumber, setRandomNumber] = useState(12)
 
   const {data, loading} = useFetch(`http://numbersapi.com/${randomNumber}/trivia`)
 
@@ -137,9 +137,6 @@ function UseStatePage() {
           <div>
             {loading ? 'fun fact loading...' : data }
           </div>
-          <button onClick={() => setRandomNumber(() => getRandomInt(100))}>
-            Get a new fact!
-          </button>
         </div>
 
         {/* Local Storage Example */}

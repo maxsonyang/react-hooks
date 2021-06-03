@@ -33,6 +33,14 @@ const IndexPage = () => {
             Doing stuff after render.
           </div>
         </div>
+        <div className="hook">
+          <Link to="/useRef">
+            useRef + useLayoutEffect
+          </Link>
+          <div className="subheader">
+            A hook that provides a reference to an element(?)
+          </div>
+        </div>
       </div>
     </div>
   )
