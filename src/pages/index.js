@@ -27,7 +27,7 @@ const IndexPage = () => {
         </div>
         <div className="hook">
           <Link to="/useEffect">
-            useEffect
+            useEffect + useLayoutEffect
           </Link>
           <div className="subheader">
             Doing stuff after render.
@@ -35,7 +35,7 @@ const IndexPage = () => {
         </div>
         <div className="hook">
           <Link to="/useRef">
-            useRef + useLayoutEffect
+            useRef
           </Link>
           <div className="subheader">
             A hook that provides a reference to an element(?)

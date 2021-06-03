@@ -15,7 +15,7 @@ function UseRefPage() {
     <div className="container-fluid">
       <div className="page-header">
         <h1>
-          useRef + useLayoutEffect
+          useRef
         </h1>
         <div className="page-subheader">
           Provides a reference to, well, anything it seems.
