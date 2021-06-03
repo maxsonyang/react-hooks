@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { Helmet } from 'react-helmet';
+import React, { useState, useEffect, useRef, useLayoutEffect} from 'react';
 import { useForm } from "../components/useForm";
 import { useFetch } from "../components/useFetch";
+import { useMeasure } from "../components/useMeasure";
 import CleanupComponent from "../components/useEffectCleanup";
 import "../styles/pages/hooks.scss";
 
@@ -17,12 +17,14 @@ function UseStatePage() {
     email: "",
     password: ""
   })
-  const [randomNumber, setRandomNumber] = useState(12)
 
+  const [randomNumber, setRandomNumber] = useState(() => getRandomInt(100))
   const {data, loading} = useFetch(`http://numbersapi.com/${randomNumber}/trivia`)
-
   const [show, setShow] = useState(true);
   const [count, setCount] = useState(0);
+  const [layoutInput, setLayoutInput] = useState("")
+  const inputRef = useRef();
+  const funFactRef = useRef();
 
   useEffect(() => {
     const storedCount = localStorage.getItem("count");
@@ -52,12 +54,20 @@ function UseStatePage() {
     console.log("Multiple useEffects can be added, and they fire in order.")
     localStorage.setItem('count', JSON.stringify(count));
   }, [count])
+  
+  // useLayoutEffect(() => {
+  //   // console.log(inputRef.current.getBoundingClientRect());
+  //   setRect(funFactRef.current.getBoundingClientRect());
+  // }, [data])
+
+  // Same thing as above but using a custom hook.
+  const rect = useMeasure(funFactRef, [data]);
 
   return (
     <>
-    <Helmet>
+    {/* <Helmet>
       <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" /> 
-    </Helmet>
+    </Helmet> */}
       <div className="container-fluid">
         <div className="page-header">
           <h1>
@@ -134,9 +144,12 @@ function UseStatePage() {
             useEffect can be a good spot to fetch data from APIs as well.
             API used: <a href="https://numbersapi.com/" target="_blank">Numbers API</a>
           </div>
-          <div>
+          <div style={{display: "flex"}}>
             {loading ? 'fun fact loading...' : data }
           </div>
+          <button onClick={() => {setRandomNumber(() => getRandomInt(100))}}>
+            Give me another.
+          </button>
         </div>
 
         {/* Local Storage Example */}
@@ -155,6 +168,73 @@ function UseStatePage() {
           <button onClick={() => setCount((c) => c + 1)}>
             Increase it!
           </button>
+        </div>
+
+        <div className="page-header">
+          <h1>
+            useLayoutEffect
+          </h1>
+          <div className="page-subheader">
+            Very similar to useEffect apparently, but has a more
+            niche use case. Not really sure what that's all about yet.
+            According to the docs, it "fires synchronously after all DOM
+            mutations."
+          </div>
+        </div>
+
+        <div className="hooks-content">
+          <h2>
+            Basic example of useLayoutEffect.
+          </h2>
+          <div className="blurb">
+            Using this to get the input's rect. Note that this
+            has been commented out.
+          </div>
+          <div>
+            <input
+              ref={inputRef}
+              name="layoutInput"
+              value={layoutInput}
+              onChange={(e) => setLayoutInput(() => e.target.value)}
+            />
+          </div>
+        </div>
+
+        {/* Using useLayoutEffect to measure a div. */}
+        <div className="hooks-content">
+          <h2>
+            Revisiting numbers API
+          </h2>
+          <div className="blurb">
+            Showing how useLayoutEffect can be used in a more practical way.
+          </div>
+          <div>
+            <div style={{display: "flex"}}>
+              <div ref={funFactRef}>
+                {loading ? 'fun fact loading...' : data }
+              </div>
+            </div>
+            <div>
+              Measurements of the fun fact div above.
+            </div>
+            <pre>
+              {JSON.stringify(rect, null, 2)}
+            </pre>
+            <button onClick={() => {setRandomNumber(() => getRandomInt(100))}}>
+              Give me another.
+            </button>
+          </div>
+        </div>
+
+        <div className="hooks-content">
+          <h2>
+            Conclusion (sort of)
+          </h2>
+          <div className="blurb">
+            It seems the gist/pattern that you'd use this is if you want to apply
+            any effects after the everything has finished rendering? It's still not
+            clear to me so I'll apply an incremental approach as suggested in the docs.
+          </div>
         </div>
       </div>
     </>
