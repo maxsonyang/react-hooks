@@ -5,9 +5,7 @@ import "../styles/pages/index.scss";
 import "../styles/pages/hooks.scss";
 import hookList from "../data/hook-list.yml"
 
-// markup
 const IndexPage = () => {
-
   function renderHooksList() {
     return hookList.map((hook) => (
       <div className="hook">
